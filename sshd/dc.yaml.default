@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  pvzdweb-sshtest:
+    build:
+        context: .
+        dockerfile: Dockerfile99.sshtest
+    image: r2h2/pvzdweb-sshtest
+    container_name: pvzdweb-sshtest
+    hostname: pvzdweb-sshtest
+    networks:
+      dfrontend:
+    volumes:
+      - pvzdweb-sshtest.log:/var/log:Z
+    cap_drop:
+      - ALL
+networks:
+  dfrontend:
+    external: true
+volumes:
+    pvzdweb-sshtest.log:
+        name: pvzdweb-sshtest.log
